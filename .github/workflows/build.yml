@@ -72,13 +72,13 @@ jobs:
 
       - name: Install basicswap-bash
         run: |
-        ./basicswap-install.sh --new --tor --internal --regtest
+          ./basicswap-install.sh --new --tor --internal --regtest
 
       - name: "Run bsx-update (TODO: breaks on Arch/Fedora?)"
         run: |
-        source ~/.bash_profile
-        echo $PATH
-        bsx-update
+          source ~/.bash_profile \
+          echo $PATH \
+          bsx-update
 
       - name: Run basicswap-bash
         run: timeout 30s ./basicswap-bash --regtest || [[ $? -eq 124 ]] && exit 0
