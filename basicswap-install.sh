@@ -201,6 +201,11 @@ if [[ -z $trasherdk ]]; then
         echo "DEBUG: xfce4"
         echo "export $addpath" | tee -a $HOME/.xsessionrc
     fi
+    if [[ -f $HOME/.bash_profile ]] || [[ $FEDORA ]]; then
+        echo "DEBUG: Using .bash_profile (Fedora)"
+        echo "export $addpath" | tee -a $HOME/.bash_profile
+    fi
+
 
 fi
 
@@ -212,7 +217,6 @@ cp -r basicswap-bash bsx* $HOME/.local/bin/.
 
 echo "DEBUG: ls files in .local/bin"
 ls -la $HOME/.local/bin/bsx-update
-echo "export $addpath"
 echo $PATH
 ls -la $HOME
 
