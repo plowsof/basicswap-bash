@@ -39,6 +39,7 @@ jobs:
   build-linux-distros:
     needs: formatting
     strategy:
+      fail-fast: false
       matrix:
         include:
           - name: Ubuntu
