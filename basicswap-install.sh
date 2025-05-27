@@ -176,24 +176,37 @@ read -p 'Press Enter to continue, or CTRL-C to exit.'
 addpath='PATH="$HOME/.local/bin:$PATH"'
 trasherdk=$(echo $PATH | grep -F '.local/bin')
 
+# $PATH in fedora git runner: 
+# /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 if [[ ! -d $HOME/.local/bin ]]; then
+    echo "DEBUG: $HOME/.local/bin dir does not exist"
     mkdir -p $HOME/.local/bin
 fi
 
 if [[ -z $trasherdk ]]; then
+    echo "DEBUG: inside trasherdk"
 
     # Bash
-    if [[ -f $HOME/.bashrc ]] || [[ $DEBIAN ]]; then
+    if [[ -f $HOME/.bashrc ]] || [[ $DEBIAN ]] || [[ $ARCH ]]; then
+        echo "DEBUG: Bash"
         echo "export $addpath" | tee -a $HOME/.bashrc
     fi
     # Zsh
     if [[ -f $HOME/.zshrc ]]; then
+        echo "DEBUG: Zsh"
         echo "export $addpath" | tee -a $HOME/.zshrc
     fi
     # xfce4
     if [[ -f $HOME/.xsessionrc ]]; then
+        echo "DEBUG: xfce4"
         echo "export $addpath" | tee -a $HOME/.xsessionrc
     fi
+    if [[ -f $HOME/.bash_profile ]] || [[ $FEDORA ]]; then
+        echo "DEBUG: Using .bash_profile (Fedora)"
+        echo "export $addpath" | tee -a $HOME/.bash_profile
+    fi
+    export PATH="$HOME/.local/bin:$PATH"
+
 
 fi
 
@@ -202,6 +215,11 @@ if [[ -d $HOME/.local/bin/bsx ]]; then
     rm -r $HOME/.local/bin/bsx* $HOME/.local/bin/basicswap-bash
 fi
 cp -r basicswap-bash bsx* $HOME/.local/bin/.
+
+echo "DEBUG: ls files in .local/bin"
+ls -la $HOME/.local/bin/bsx-update
+echo $PATH
+ls -la $HOME
 
 ## Make venv and set variables for install
 export monerod_addr="${monerod_addr}"
