@@ -210,6 +210,9 @@ if [[ -d $HOME/.local/bin/bsx ]]; then
 fi
 cp -r basicswap-bash bsx* $HOME/.local/bin/.
 
+echo "DEBUG: ls files in .local/bin"
+ls -la $HOME/.local/bin
+
 ## Make venv and set variables for install
 export monerod_addr="${monerod_addr}"
 export monerod_port="${monerod_port}"
