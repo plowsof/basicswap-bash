@@ -76,7 +76,6 @@ jobs:
 
       - name: "Run bsx-update (TODO: breaks on Arch/Fedora?)"
         run: |
-          source ~/.bash_profile && \
           echo $PATH && \
           bsx-update
 
