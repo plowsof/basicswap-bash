@@ -212,6 +212,7 @@ cp -r basicswap-bash bsx* $HOME/.local/bin/.
 
 echo "DEBUG: ls files in .local/bin"
 ls -la $HOME/.local/bin/bsx-update
+echo "export $addpath"
 echo $PATH
 ls -la $HOME
 
