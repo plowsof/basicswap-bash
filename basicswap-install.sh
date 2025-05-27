@@ -187,7 +187,7 @@ if [[ -z $trasherdk ]]; then
     echo "DEBUG: inside trasherdk"
 
     # Bash
-    if [[ -f $HOME/.bashrc ]] || [[ $DEBIAN ]]; then
+    if [[ -f $HOME/.bashrc ]] || [[ $DEBIAN ]] || [[ $ARCH ]]; then
         echo "DEBUG: Bash"
         echo "export $addpath" | tee -a $HOME/.bashrc
     fi
