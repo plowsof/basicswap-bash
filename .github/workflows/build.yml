@@ -37,7 +37,7 @@ jobs:
         [[ $(git diff) ]] && git diff && exit 1 || exit 0
 
   build-linux-distros:
-    needs: formatting
+    #needs: formatting
     strategy:
       fail-fast: false
       matrix:
@@ -80,7 +80,7 @@ jobs:
         run: timeout 30s ./basicswap-bash --regtest || [[ $? -eq 124 ]] && exit 0
 
   build-macos:
-    needs: formatting
+    #needs: formatting
     name: 'macOS (brew)'
     runs-on: macOS-latest
     steps:
