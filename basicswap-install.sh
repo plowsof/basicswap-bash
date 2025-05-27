@@ -205,6 +205,7 @@ if [[ -z $trasherdk ]]; then
         echo "DEBUG: Using .bash_profile (Fedora)"
         echo "export $addpath" | tee -a $HOME/.bash_profile
     fi
+    export PATH="$HOME/.local/bin:$PATH"
 
 
 fi
