@@ -71,10 +71,13 @@ jobs:
         run: ${{ matrix.install }}
 
       - name: Install basicswap-bash
-        run: ./basicswap-install.sh --new --tor --internal --regtest
+        run: |
+        ./basicswap-install.sh --new --tor --internal --regtest
 
       - name: "Run bsx-update (TODO: breaks on Arch/Fedora?)"
-        run: bsx-update
+        run: |
+        echo $PATH
+        bsx-update
 
       - name: Run basicswap-bash
         run: timeout 30s ./basicswap-bash --regtest || [[ $? -eq 124 ]] && exit 0
