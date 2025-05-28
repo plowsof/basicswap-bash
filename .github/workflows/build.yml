@@ -72,7 +72,6 @@ jobs:
         timeout 30s ./basicswap-bash --regtest || [[ $? -eq 124 ]] && exit 0
 
   build-fedora:
-    needs: formatting
     name: 'Fedora'
     runs-on: ubuntu-latest
     container:
