@@ -44,4 +44,5 @@ rm -r $HOME/.local/bin/bsx $HOME/.local/bin/basicswap-*
 cp -r basicswap-bash bsx* $HOME/.local/bin/. ;
 
 # Update BasicSwap, coincurve and coin cores
+# tesssst
 $HOME/.local/bin/bsx/update.sh
