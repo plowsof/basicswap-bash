@@ -10,7 +10,7 @@ if [[ -d basicswap ]]; then
         exit 1
     }
 else
-    git clone https://github.com/basicswap/basicswap || {
+    git clone https://github.com/plowsof/basicswap || {
         red "Failed to clone repo. Please run the installer again"
         exit 1
     }
