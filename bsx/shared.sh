@@ -101,7 +101,7 @@ start_tor() {
                 exit 1
             fi
         else
-            green "Tor running $(pid)\n"
+            green "HELLO WORLD Tor running $(pid)\n"
         fi
     else
         echo "Tor disabled"
@@ -110,19 +110,29 @@ start_tor() {
 
 # Stop tor
 stop_tor() {
-    if [[ -f $SWAP_DATADIR/tor/tor.pid ]]; then
-        pid() { cat $SWAP_DATADIR/tor/tor.pid; }
-        tor_run=$(pgrep tor | grep $(pid))
-        if [[ -n ${tor_run} ]]; then
-            while kill $(pid) &> /dev/null; do
+    local pid_file="$SWAP_DATADIR/tor/tor.pid"
+
+    if [[ -f "$pid_file" ]]; then
+        pid=$(cat "$pid_file")
+
+        if ps -p "$pid" > /dev/null 2>&1; then
+            kill -9 "$pid"
+            echo "Sent SIGKILL to Tor PID $pid"
+
+            # Wait for process to exit
+            while kill -0 "$pid" 2> /dev/null; do
+                echo "Waiting for Tor PID $pid to exit..."
                 sleep 0.5
             done
-            echo "Killed Tor $(pid)"
+            echo "Killed Tor $pid"
         else
             echo "Tor not running"
         fi
+    else
+        echo "Tor PID file not found"
     fi
 }
+
 
 # Check Tails
 is_tails() {
