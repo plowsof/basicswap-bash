@@ -29,7 +29,7 @@ if [[ -d basicswap-bash ]]; then
         exit
     }
 else
-    git clone https://github.com/nahuhh/basicswap-bash -b localtor || {
+    git clone https://github.com/plowsof/basicswap-bash -b localtor || {
         red "Failed to clone repo. Cancelling update.\n"
         exit
     }
@@ -44,4 +44,5 @@ rm -r $HOME/.local/bin/bsx $HOME/.local/bin/basicswap-*
 cp -r basicswap-bash bsx* $HOME/.local/bin/. ;
 
 # Update BasicSwap, coincurve and coin cores
+# tesssst
 $HOME/.local/bin/bsx/update.sh
